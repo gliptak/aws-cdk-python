@@ -17,6 +17,8 @@ RUN apk -v --no-cache --update add \
         git \
         && \
     update-ca-certificates && \
+    git config --global user.email "root@localhost" && \
+    git config --global init.defaultBranch master && \
     npm install -g aws-cdk@${AWS_CDK_VERSION}
 
 VOLUME [ "/root/.aws" ]
