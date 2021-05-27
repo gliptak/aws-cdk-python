@@ -6,6 +6,7 @@ RUN apk -v --no-cache --update add \
         nodejs \
         npm \
         python3 \
+        py3-pip \
         ca-certificates \
         groff \
         less \
@@ -19,14 +20,15 @@ RUN apk -v --no-cache --update add \
     update-ca-certificates && \
     git config --global user.email "root@localhost" && \
     git config --global init.defaultBranch master && \
+    pip install aws_cdk.core==1.105.0 && \
     npm install -g aws-cdk@${AWS_CDK_VERSION}
 
 VOLUME [ "/root/.aws" ]
 VOLUME [ "/app" ]
 
-# Allow for caching python modules
-VOLUME ["/usr/lib/python3.8/site-packages/"]
+# Allow for caching user python modules
+VOLUME ["/root/.local/lib/python3.8/site-packages"]
 
-WORKDIR /opt/app
+WORKDIR /app
 
 ENTRYPOINT ["cdk"]
