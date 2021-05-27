@@ -15,3 +15,6 @@ jobs:
       - name: Build image
         run: |
           docker build --tag ${{ github.repository }}:latest .
+      - name: Run image
+        run: |
+          docker run --rm ${{ github.repository }}:latest
