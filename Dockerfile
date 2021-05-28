@@ -27,7 +27,7 @@ VOLUME ["/home/${CDK_USER}/.local/lib/python3.8/site-packages"]
 USER "$CDK_USER"
 WORKDIR /app
 
-RUN git config --global user.email "root@localhost" && \
+RUN git config --global user.email "cdk@localhost" && \
     git config --global init.defaultBranch master
 
-ENTRYPOINT ["cdk"]
+ENTRYPOINT ["/bin/sh"]
