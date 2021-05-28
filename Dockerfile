@@ -13,10 +13,9 @@ RUN apk -v --no-cache --update add \
         py3-pip \
         && \
     pip install "aws_cdk.core==$AWS_CDK_VERSION" && \
-    npm install -g "aws-cdk@$AWS_CDK_VERSION"
-
-RUN groupadd -g 1000 "$CDK_USER"
-RUN useradd -l -u 1000 -g "$CDK_USER" -G users "$CDK_USER"
+    npm install -g "aws-cdk@$AWS_CDK_VERSION" && \
+    groupadd -g 1000 "$CDK_USER" && \
+    useradd -l -u 1000 -g "$CDK_USER" -G users "$CDK_USER"
 
 VOLUME [ "/home/${CDK_USER}/.aws" ]
 VOLUME [ "/app" ]
@@ -24,10 +23,12 @@ VOLUME [ "/app" ]
 # Allow for caching user python modules
 VOLUME ["/home/${CDK_USER}/.local/lib/python3.8/site-packages"]
 
+RUN mkdir -p "/home/$CDK_USER" && chown -R "$CDK_USER:users" "/home/$CDK_USER"
+
 USER "$CDK_USER"
 WORKDIR /app
 
 RUN git config --global user.email "cdk@localhost" && \
     git config --global init.defaultBranch master
 
-ENTRYPOINT ["/bin/sh"]
+CMD ["/bin/sh"]

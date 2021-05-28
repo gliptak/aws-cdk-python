@@ -16,6 +16,8 @@ docker run --rm -v ~/.aws:/root/.aws -v $(pwd):/app -v $(pwd)/site-packages:/usr
 
 https://jtreminio.com/blog/running-docker-containers-as-current-host-user/
 
+https://medium.com/redbubble/running-a-docker-container-as-a-non-root-user-7d2e00f8ee15
+
 https://github.com/moby/moby/issues/34129
 
 https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
