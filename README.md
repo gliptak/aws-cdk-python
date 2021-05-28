@@ -1,16 +1,29 @@
 # publish-image
 
+## Docker packages
+
 https://github.com/gliptak?tab=packages
 
-https://docs.github.com/en/actions/guides/publishing-docker-images
+## Usage
 
-https://github.com/opencontainers/image-spec/blob/master/annotations.md
+Following https://docs.aws.amazon.com/cdk/latest/guide/hello_world.html 
 
-https://github.com/marketplace/actions/publish-docker-image
+docker run -v ~/.aws:/home/cdk/.aws -v $(pwd):/app --rm -it gliptak/publish-image:latest
 
-```
-docker run --rm -v ~/.aws:/root/.aws -v $(pwd):/app -v $(pwd)/site-packages:/usr/lib/python3.8/site-packages/ ghcr.io/gliptak/publish-image:latest --version
-```
+cdk init app --language python
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+
+cdk ls
+cdk synth
+
+export AWS_PROFILE=myprofile
+
+cdk bootstrap
+
+cdk deploy
+cdk diff
+cdk destroy
 
 ## References
 
@@ -21,4 +34,13 @@ https://medium.com/redbubble/running-a-docker-container-as-a-non-root-user-7d2e0
 https://github.com/moby/moby/issues/34129
 
 https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
+
+https://docs.aws.amazon.com/cdk/latest/guide/tagging.html
+
+https://docs.github.com/en/actions/guides/publishing-docker-images
+
+https://github.com/opencontainers/image-spec/blob/master/annotations.md
+
+https://github.com/marketplace/actions/publish-docker-image
+
 
