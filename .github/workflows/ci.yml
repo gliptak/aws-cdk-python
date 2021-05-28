@@ -17,4 +17,5 @@ jobs:
           docker build --tag ${{ github.repository }}:latest .
       - name: Run image
         run: |
-          docker run --rm ${{ github.repository }}:latest /bin/sh
+          docker run --rm ${{ github.repository }}:latest /bin/sh -c "/usr/bin/cdk --version"
+

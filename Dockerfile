@@ -23,12 +23,13 @@ VOLUME [ "/app" ]
 # Allow for caching user python modules
 VOLUME ["/home/${CDK_USER}/.local/lib/python3.8/site-packages"]
 
-RUN mkdir -p "/home/$CDK_USER" && chown -R "$CDK_USER:users" "/home/$CDK_USER"
+RUN mkdir -p "/home/$CDK_USER" && chown -R "$CDK_USER:$CDK_USER" "/home/$CDK_USER"
 
 USER "$CDK_USER"
 WORKDIR /app
 
 RUN git config --global user.email "cdk@localhost" && \
+    git config --global user.name "cdk" && \
     git config --global init.defaultBranch master
 
 CMD ["/bin/sh"]
