@@ -2,7 +2,7 @@ ARG ALPINE_VERSION=3.13
 
 FROM alpine:${ALPINE_VERSION}
 
-ARG AWS_CDK_VERSION=1.105.0
+ARG AWS_CDK_VERSION=1.106.1
 ARG CDK_USER=cdk
 
 RUN apk -v --no-cache --update add \
