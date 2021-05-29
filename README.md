@@ -1,6 +1,8 @@
 # AWS Cloud Development Kit (AWS CDK) Python Docker Container
 
 [![Build Docker image](https://github.com/gliptak/aws-cdk-python/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/gliptak/aws-cdk-python/actions/workflows/ci.yml?branch=master)
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/gliptak/aws-cdk-python?sort=semver)
+
 ## Docker packages
 
 https://hub.docker.com/r/gliptak/aws-cdk-python
