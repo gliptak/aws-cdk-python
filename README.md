@@ -44,6 +44,17 @@ cdk diff
 cdk destroy
 ```
 
+## Override UID/GID
+
+Tailor example configuration [docker-compose.yml](docker-compose.yml) and [.env](.env). Note the `--build` flag
+
+```
+docker-compose up -d --build
+docker-compose exec cdk cdk version
+docker-compose exec cdk sh
+docker-compose down
+```
+
 ## Notes
 
 https://jtreminio.com/blog/running-docker-containers-as-current-host-user/

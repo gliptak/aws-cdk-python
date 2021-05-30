@@ -18,4 +18,9 @@ jobs:
       - name: Run image
         run: |
           docker run --rm ${{ github.repository }}:latest /bin/sh -c "/usr/bin/cdk --version"
-
+      - name: Compose image
+        run: |
+          docker-compose up -d --build
+          docker-compose exec -T cdk touch 1001.txt
+          docker-compose down
+          stat -c %u 1001.txt | grep 1001
