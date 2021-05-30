@@ -3,7 +3,10 @@ ARG ALPINE_VERSION=3.13
 FROM alpine:${ALPINE_VERSION}
 
 ARG AWS_CDK_VERSION=1.106.1
-ARG CDK_USER=cdk
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
+ENV CDK_USER=cdk
 
 RUN apk -v --no-cache --update add \
         shadow \
@@ -14,8 +17,8 @@ RUN apk -v --no-cache --update add \
         && \
     rm -rf /var/cache/apk/* && \
     npm install -g "aws-cdk@$AWS_CDK_VERSION" && \
-    groupadd -g 1000 "$CDK_USER" && \
-    useradd -l -u 1000 -g "$CDK_USER" -G users "$CDK_USER"
+    groupadd -g "$GROUP_ID" "$CDK_USER" && \
+    useradd -l -u "$USER_ID" -g "$CDK_USER" "$CDK_USER"
 
 VOLUME [ "/home/${CDK_USER}/.aws" ]
 VOLUME [ "/app" ]
