@@ -14,7 +14,7 @@ https://github.com/users/gliptak/packages/container/package/aws-cdk-python
 Run single (`cdk`) command on mounted project
 
 ```
-docker run -v ~/.aws:/home/cdk/.aws -v $(pwd):/app --rm -it gliptak/aws-cdk-python:latest /bin/sh -c "/usr/bin/cdk version"
+docker run -v ~/.aws:/home/cdk/.aws -v $(pwd):/app --rm -it gliptak/aws-cdk-python:latest /bin/sh -c "/usr/local/bin/cdk version"
 ```
 
 Following https://docs.aws.amazon.com/cdk/latest/guide/hello_world.html 
