@@ -9,12 +9,6 @@ https://hub.docker.com/r/gliptak/aws-cdk-python
 
 https://github.com/users/gliptak/packages/container/package/aws-cdk-python
 
-## Node.js lifecycle
-
-- This image now uses Node.js 24 (Krypton), which reaches End-of-Life on **2028-04-30**.
-- The previous Node.js 22 (Jod) line reaches End-of-Life on **2027-04-30**.
-- Source: https://github.com/nodejs/Release/blob/main/schedule.json
-
 ## Usage
 
 Run single (`cdk`) command on mounted project
