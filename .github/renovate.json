@@ -2,5 +2,35 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["(^|/)Dockerfile$"],
+      "matchStrings": [
+        "ARG NODE_VERSION=(?<currentValue>\\d+)"
+      ],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "node"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["(^|/)Dockerfile$"],
+      "matchStrings": [
+        "ARG ALPINE_VERSION=(?<currentValue>[\\d.]+)"
+      ],
+      "depNameTemplate": "alpine",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["(^|/)Dockerfile$"],
+      "matchStrings": [
+        "ARG AWS_CDK_VERSION=(?<currentValue>[\\d.]+)"
+      ],
+      "depNameTemplate": "aws-cdk",
+      "datasourceTemplate": "npm"
+    }
   ]
 }
